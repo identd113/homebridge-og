@@ -30,8 +30,13 @@ class Characteristic {
     }
 
     triggerGetSync() {
-        var result
-        this._on['get']((err, r) => result =r )
+        let error, result
+        this._on['get']((err, r) => {
+            error = err
+            result = r
+        })
+        if (error)
+            throw error
         return result
     }
 
@@ -52,17 +57,19 @@ class Characteristic {
 }
 
 class GarageDoorOpener extends MockDevice {}
+class OccupancySensor extends MockDevice {}
 const MockHomebridge = {
     hap: {
         uuid: { generate: (input) => input },
-        Service: {GarageDoorOpener},
+        Service: {GarageDoorOpener, OccupancySensor},
         Characteristic: {
             Manufacturer: {name: "Manufacturer"},
             Model: {name: "Model"},
             SerialNumber: {name: "SerialNumber"},
             TargetDoorState: {name: "TargetDoorState", CLOSED: "T_CLOSED", OPEN: "T_OPEN"},
             CurrentDoorState: {name: "CurrentDoorState", CLOSED: "CLOSED", OPEN: "OPEN"},
-            ObstructionDetected: {name: "ObstructionDetected"}
+            ObstructionDetected: {name: "ObstructionDetected"},
+            OccupancyDetected: {name: "OccupancyDetected", OCCUPANCY_DETECTED: "DETECTED", OCCUPANCY_NOT_DETECTED: "NOT_DETECTED"}
         }
     }
 }
@@ -98,8 +105,8 @@ describe('OpenGarage', function() {
     var MockDate
     var currentDoorState
     var targetDoorState
-    let pollFrequencyMs = OpenGarageModule.defaults.pollFrequencyMs
-    var openDurationMs = OpenGarageModule.defaults.openDurationMs
+    const pollFrequencyMs = OpenGarageModule.defaults.pollFrequencySecs * 1000
+    const openDurationMs = OpenGarageModule.defaults.openCloseDurationSecs * 1000
     let Characteristic = MockHomebridge.hap.Characteristic
     let Service = MockHomebridge.hap.Service
 
