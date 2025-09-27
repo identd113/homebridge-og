@@ -8,13 +8,13 @@ made to work with OpenGarage
 
 This plugin only works with OpenGarage Firmware 1.0.8 or later.
 
-You must have NodeJS `v8.1.4` or later installed as `homebridge-og` depends on JavaScript features introduced at that point. Check your node version:
+You must have Node.js `v16.0.0` or later installed, matching the minimum runtime required by Homebridge 2. Check your node version:
 
 ```
 node --version
 ```
 
-You need [Homebridge](https://github.com/nfarina/homebridge) installed and configured. This plugin was developed against Homebridge `0.4.43`.
+You need [Homebridge](https://github.com/nfarina/homebridge) installed and configured. This plugin requires Homebridge `2.0.0` or later.
 
 ```
 npm install -g homebridge

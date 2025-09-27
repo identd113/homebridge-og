@@ -16,7 +16,7 @@
 	"directories": {},
         "engines": {
                 "homebridge": ">=2.0.0",
-                "node": ">=8.1.4"
+                "node": ">=16.0.0"
         },
 	"keywords": [
 		"homebridge-plugin",
