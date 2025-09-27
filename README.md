@@ -37,6 +37,7 @@ Update your config.json configuration file. See the example below.
 - `key` - The password to control your OpenGarage device
 - `openCloseDurationSecs` - The amount of time within which an open/close transition should reliably complete (and OpenGarage will sense the new door state), including the OpenGarage warning beeps.
 - `pollFrequencySecs` - How often to poll OpenGarage for state changes. This will enable state updates for the garage door when not controlled via this homebridge plugin.
+- `debug` - Optional. Enable verbose logging of API calls when `true`. Defaults to `false`.
 
 ### Sample config.json
 
@@ -50,7 +51,8 @@ Update your config.json configuration file. See the example below.
                 "ip": "192.168.0.4",
                 "key": "YourPassword",
                 "openCloseDurationSecs": 22,
-                "pollFrequencySecs": 60
+                "pollFrequencySecs": 60,
+                "debug": true
             }
         ]
     }
