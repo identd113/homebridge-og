@@ -14,10 +14,10 @@
 		"eslint": "^4.9.0"
 	},
 	"directories": {},
-	"engines": {
-		"homebridge": ">=0.4.0",
-		"node": ">=8.1.4"
-	},
+        "engines": {
+                "homebridge": ">=2.0.0",
+                "node": ">=8.1.4"
+        },
 	"keywords": [
 		"homebridge-plugin",
 		"OpenGarage"
@@ -36,8 +36,8 @@
 	],
 	"name": "homebridge-og",
 	"optionalDependencies": {},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
+        "scripts": {
+                "test": "mocha"
+        },
 	"version": "3.1.1"
 }
